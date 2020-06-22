@@ -5,7 +5,7 @@ NOP	                ; ## Aufgabe 1
         MOV AL,0                ; Open as read only
         LEA DX,datei            ; Dateipfad laden
         INT 21h                 ; Interrupt zum Oeffnen durchfuehren
-        MOV dateihandle,AX		; Handle-Nummer in 'dateihandle' speichern
+        MOV dateihandle,AX      ; Handle-Nummer in 'dateihandle' speichern
 
         ; -- Datei lesen
         MOV AH,3Fh
