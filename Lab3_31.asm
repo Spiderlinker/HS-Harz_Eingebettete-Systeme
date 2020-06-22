@@ -9,8 +9,8 @@ data_seg segment 'data'                 ;Datensegment
         datei db 'C:\text3.txt',00h     ;Dateipfad der Datei, die eingelesen werden soll.
         handle dw 3333h                 ; Dateihandle beim Oeffnen der Datei erhalten
         anzahl dw 4444h                 ; Anzahl gelesener Bytes
-        inhalt db 500 dup('$')          ;Reservierter Speicher für Inhalt der Datei
-        converted db 500 dup('$')       ; Konvertierter Inhalt der Datei
+        inhalt db 1024 dup('$')          ;Reservierter Speicher für Inhalt der Datei
+        converted db 1024 dup('$')       ; Konvertierter Inhalt der Datei
 
 data_seg ends
 ;-------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ start:      mov ax,data_seg             ;Datensegmentadresse nach AX laden
         ; -- Datei lesen
         MOV AH,3Fh
         MOV BX,handle           ; Handle(nummer) vom Oeffnen angeben
-        MOV CX,anzahl           ; Anzahl zu lesender Zeichen angeben
+        MOV CX,1024             ; Anzahl zu lesender Zeichen angeben
         LEA DX,inhalt           ; Speicherort der gelesenen Zeichen angeben
         INT 21h                 ; Datei lesen
 
@@ -128,4 +128,3 @@ belowEq:    DEC CX              ; Counter dekrementieren
             int 21h              ; beendet das Programm und gibt die Kontrolle an das Betriebssystem zurueck
 prog_seg ends
 end start
-
