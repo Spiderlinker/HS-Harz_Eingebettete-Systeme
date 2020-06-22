@@ -112,7 +112,6 @@ belowEq:    DEC CX              ; Counter dekrementieren
 
         MOV DH,9                ; Zeile des Cursors setzen
         MOV DL,25               ; Spalte des Cursors setzen
-        MOV BH,0                ; Bildschirmseite auf 0 setzen
         MOV AH,2                ; Interrupt vorbereiten -> Cursor setzen
         INT 10h                 ; Interrupt ausloesen und Cursor auf Position Zeile:9,Spalte:25 setzen
 
